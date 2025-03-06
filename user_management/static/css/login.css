@@ -121,10 +121,35 @@ body {
     font-size: 16px;
 }
 
-.qr-codes {
+.label-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 5px;
+    background-color: #00ff00; /* 保持与背景相同的颜色 */
+}
+
+.label-container span {
+    font-size: 14px;
+}
+
+.needs-link {
+    color: blue;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 30px 0;
+}
+
+.qr-codes {
+    display: flex;
+    gap: 15px;
 }
 
 .qr-item {
@@ -143,7 +168,6 @@ body {
 }
 
 .submit-btn {
-    align-self: flex-end;
     background-color: #000;
     color: white;
     border: none;
@@ -151,7 +175,7 @@ body {
     padding: 12px 25px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 20px;
+    margin-left: 50px; /* 添加左侧间距，与二维码保持距离 */
 }
 
 /* 右侧插图部分 */

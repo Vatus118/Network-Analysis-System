@@ -28,8 +28,7 @@
                 <h1>GET IN TOUCH :)</h1>
                 <p class="subtitle">交个朋友? 谈场合作? 联系我, 或者我联系你</p>
 
-                <form id="contactForm" method="POST">
-                    {% csrf_token %}
+                <form id="contactForm">
                     <div class="form-group">
                         <label for="name">你的称呼 / YOUR NAME</label>
                         <input type="text" id="name" name="name">
@@ -41,26 +40,30 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="need">有何需求 / YOUR NEED</label>
+                        <div class="label-container">
+                            <span>有何需求 / YOUR NEED</span>
+                            <a href="introduction" class="needs-link">查看网站功能介绍</a>
+                        </div>
                         <input type="text" id="need" name="need">
                     </div>
 
-                    <div class="qr-codes">
-                        <div class="qr-item">
-                            <img src="email-qr.png" alt="Email QR Code">
-                            <span>Email</span>
+                    <div class="footer-row">
+                        <div class="qr-codes">
+                            <div class="qr-item">
+                                <img src="email-qr.png" alt="Email QR Code">
+                                <span>Email</span>
+                            </div>
+                            <div class="qr-item">
+                                <img src="qq-qr.png" alt="QQ QR Code">
+                                <span>QQ</span>
+                            </div>
+                            <div class="qr-item">
+                                <img src="wechat-qr.png" alt="WeChat QR Code">
+                                <span>WeChat</span>
+                            </div>
                         </div>
-                        <div class="qr-item">
-                            <img src="qq-qr.png" alt="QQ QR Code">
-                            <span>QQ</span>
-                        </div>
-                        <div class="qr-item">
-                            <img src="wechat-qr.png" alt="WeChat QR Code">
-                            <span>WeChat</span>
-                        </div>
+                        <button type="submit" class="submit-btn">SUBMIT</button>
                     </div>
-
-                    <button type="submit" class="submit-btn">SUBMIT</button>
                 </form>
             </div>
 

@@ -21,5 +21,6 @@ from user_management import views
 urlpatterns = [
     # path('admin/', admin.site.urls),
     path('index/', views.index, name='index'),
-    path('login/', views.login, name='login')
+    path('login/', views.login, name='login'),
+    path('login/introduction/', views.introduction, name='introduction')
 ]

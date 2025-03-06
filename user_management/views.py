@@ -13,3 +13,9 @@ def login(request):
         need = request.POST.get('need')
         print(name, email, need)
         return HttpResponse('Hello World')
+    
+def introduction(request):
+    if request.method == 'GET':
+        return render(request, 'introduction.html')
+    elif request.method == 'POST':
+        return HttpResponse('Hello World')

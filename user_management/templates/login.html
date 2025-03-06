@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>舆情监管系统 - 联系我们</title>
+    <link rel="stylesheet" href="../static/css/login.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 左上角logo -->
+        <div class="logo">
+            <img src="logo.svg" alt="Logo">
+        </div>
+
+        <!-- 右上角联系按钮 -->
+        <div class="header-contact">
+            <div class="menu-icon">
+                <div class="circle"></div>
+            </div>
+            <div class="contact-button">CONTACT</div>
+        </div>
+
+        <!-- 主体内容 -->
+        <div class="content">
+            <!-- 左侧表单部分 -->
+            <div class="form-section">
+                <h1>GET IN TOUCH :)</h1>
+                <p class="subtitle">交个朋友? 谈场合作? 联系我, 或者我联系你</p>
+
+                <form id="contactForm" method="POST">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="name">你的称呼 / YOUR NAME</label>
+                        <input type="text" id="name" name="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">你的邮箱 / YOUR EMAIL</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="need">有何需求 / YOUR NEED</label>
+                        <input type="text" id="need" name="need">
+                    </div>
+
+                    <div class="qr-codes">
+                        <div class="qr-item">
+                            <img src="email-qr.png" alt="Email QR Code">
+                            <span>Email</span>
+                        </div>
+                        <div class="qr-item">
+                            <img src="qq-qr.png" alt="QQ QR Code">
+                            <span>QQ</span>
+                        </div>
+                        <div class="qr-item">
+                            <img src="wechat-qr.png" alt="WeChat QR Code">
+                            <span>WeChat</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="submit-btn">SUBMIT</button>
+                </form>
+            </div>
+
+            <!-- 右侧插图部分 -->
+            <div class="illustration-section">
+                <div class="chat-bubble">
+                    <div class="bubble-text">INPUTTING...</div>
+                    <div class="contact-icons">
+                        <div class="icon email-icon"></div>
+                        <div class="icon phone-icon"></div>
+                        <div class="icon wechat-icon"></div>
+                    </div>
+                </div>
+                <div class="desk-illustration">
+                    <div class="monitor">
+                        <div class="screen">
+                            <div class="note note1"></div>
+                            <div class="note note2"></div>
+                            <div class="note note3"></div>
+                            <div class="note note4"></div>
+                            <div class="note note5"></div>
+                            <div class="note note6"></div>
+                        </div>
+                    </div>
+                    <div class="stick-figure">
+                        <!-- 简笔画人物 -->
+                    </div>
+                    <div class="desk"></div>
+                    <div class="laptop"></div>
+                    <div class="coffee-mug"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

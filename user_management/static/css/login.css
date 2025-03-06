@@ -1,0 +1,308 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #111;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    height: 650px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #111;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Logo 样式 */
+.logo {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.logo img {
+    width: 50px;
+    height: auto;
+}
+
+/* 右上角联系按钮 */
+.header-contact {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+
+.menu-icon {
+    margin-right: 10px;
+}
+
+.circle {
+    width: 30px;
+    height: 30px;
+    background-color: #00ff00;
+    border-radius: 50%;
+}
+
+.contact-button {
+    background-color: transparent;
+    color: white;
+    padding: 8px 16px;
+    border: 2px solid white;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/* 主体内容区域 */
+.content {
+    display: flex;
+    flex: 1;
+    height: 100%;
+}
+
+/* 左侧表单部分 */
+.form-section {
+    width: 50%;
+    background-color: #00ff00;
+    padding: 80px 50px 40px;
+    display: flex;
+    flex-direction: column;
+    color: #000;
+}
+
+.form-section h1 {
+    font-size: 42px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    margin-top: 40px;
+}
+
+.subtitle {
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 25px;
+    background-color: white;
+    font-size: 16px;
+}
+
+.qr-codes {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px 0;
+}
+
+.qr-item {
+    text-align: center;
+    width: 80px;
+}
+
+.qr-item img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+.qr-item span {
+    font-size: 12px;
+}
+
+.submit-btn {
+    align-self: flex-end;
+    background-color: #000;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    padding: 12px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+/* 右侧插图部分 */
+.illustration-section {
+    width: 50%;
+    background-color: #111;
+    position: relative;
+    padding: 80px 30px;
+    overflow: hidden;
+}
+
+.chat-bubble {
+    background-color: #222;
+    border-radius: 20px;
+    padding: 20px;
+    width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.bubble-text {
+    color: #00ff00;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.contact-icons {
+    display: flex;
+    justify-content: space-around;
+}
+
+.icon {
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.email-icon {
+    background-image: url('email-icon.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.phone-icon {
+    background-image: url('phone-icon.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.wechat-icon {
+    background-image: url('wechat-icon.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.desk-illustration {
+    margin-top: 40px;
+    height: 60%;
+    position: relative;
+}
+
+.monitor {
+    width: 80%;
+    height: 250px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.screen {
+    width: 100%;
+    height: 80%;
+    background-color: #222;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.note {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.note1 { top: 20px; left: 20px; }
+.note2 { top: 20px; left: 90px; }
+.note3 { top: 20px; right: 20px; }
+.note4 { bottom: 20px; left: 30px; }
+.note5 { bottom: 20px; right: 90px; }
+.note6 { bottom: 20px; right: 20px; }
+
+.stick-figure {
+    position: absolute;
+    right: 20px;
+    top: 0;
+    width: 150px;
+    height: 300px;
+}
+
+.desk {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #333;
+}
+
+.laptop {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    height: 80px;
+    background-color: #444;
+}
+
+.coffee-mug {
+    position: absolute;
+    bottom: 20px;
+    right: 50px;
+    width: 30px;
+    height: 40px;
+    background-color: #555;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .container {
+        height: auto;
+    }
+    
+    .content {
+        flex-direction: column;
+    }
+    
+    .form-section,
+    .illustration-section {
+        width: 100%;
+    }
+    
+    .form-section {
+        padding: 80px 30px 40px;
+    }
+    
+    .illustration-section {
+        display: none;
+    }
+}

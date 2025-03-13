@@ -8,7 +8,7 @@ from .forms import UserRegistrationForm, UserLoginForm, UserProfileForm, UserUpd
 # Create your views here.
 def introduction(request):
     if request.method == 'GET':
-        return render(request, 'introduction.html')
+        return render(request, '../templates/introduction.html')
     elif request.method == 'POST':
         return HttpResponse('Hello World')
     
@@ -22,7 +22,7 @@ def register_view(request):
             return redirect('dashboard')  # 重定向到urls.py中定义的名为“dashboard”的URL模式
     else:  # 若为GET请求，则展示空表单并渲染注册页面
         form = UserRegistrationForm()  # 空表单
-    return render(request, 'user_management/register.html', {'form': form})
+    return render(request, '../templates/register.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -39,7 +39,7 @@ def login_view(request):
             messages.error(request, "登录失败，请检查邮箱和密码。")
     else:
         form = UserLoginForm()
-    return render(request, 'user_management/login.html', {'form': form})
+    return render(request, '../templates/login.html', {'form': form})
 
 @login_required
 def logout_view(request):
@@ -49,7 +49,7 @@ def logout_view(request):
 
 @login_required
 def dashboard_view(request):
-    return render(request, 'user_management/dashboard.html')
+    return render(request, '../templates/dashboard.html')
 
 @login_required
 def profile_view(request):
@@ -70,16 +70,16 @@ def profile_view(request):
         'user_form': user_form,
         'profile_form': profile_form
     }
-    return render(request, 'user_management/profile.html', context)
+    return render(request, '../templates/profile.html', context)
 
 @login_required
 def user_list_view(request):
     users = User.objects.all()
-    return render(request, 'user_management/user_list.html', {'users': users})
+    return render(request, '../templates/user_list.html', {'users': users})
 
 @login_required
 def user_detail_view(request, user_id):
     user = get_object_or_404(User, id=user_id)
-    return render(request, 'user_management/user_detail.html', {'user': user})
+    return render(request, '../templates/user_detail.html', {'user': user})
 
 

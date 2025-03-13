@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ user_detail.username }} | 用户管理系统{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 mb-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">仪表板</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'user_list' %}">用户列表</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ user_detail.username }}</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">用户资料</h5>
+            </div>
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    {% if user_detail.avatar %}
+                    <img src="{{ user_detail.avatar.url }}" alt="{{ user_detail.username }}" class="avatar-large rounded-circle">
+                    {% else %}
+                    <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center">
+                        <span>{{ user_detail.username|make_list|first|upper }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <h4>{{ user_detail.username }}</h4>
+                <p class="text-muted">{{ user_detail.email }}</p>
+                
+                <p class="mt-3">
+                    {% if user_detail.profile.bio %}
+                    {{ user_detail.profile.bio }}
+                    {% else %}
+                    <span class="text-muted">未设置个人简介</span>
+                    {% endif %}
+                </p>
+                
+                {% if user.id == user_detail.id %}
+                <a href="{% url 'profile' %}" class="btn btn-outline-primary">编辑资料</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">详细信息</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>用户名</span>
+                        <span class="fw-bold">{{ user_detail.username }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>邮箱</span>
+                        <span class="fw-bold">{{ user_detail.email }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>账户创建时间</span>
+                        <span class="fw-bold">{{ user_detail.date_joined|date:"Y-m-d H:i" }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>最后登录时间</span>
+                        <span class="fw-bold">{{ user_detail.last_login|date:"Y-m-d H:i" }}</span>
+                    </li>
+                    {% if user_detail.profile.phone %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>电话</span>
+                        <span class="fw-bold">{{ user_detail.profile.phone }}</span>
+                    </li>
+                    {% endif %}
+                    {% if user_detail.profile.address %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>地址</span>
+                        <span class="fw-bold">{{ user_detail.profile.address }}</span>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">活动</h5>
+            </div>
+            <div class="card-body">
+                <!-- 这里可以添加用户活动记录、帖子等 -->
+                <p class="text-muted text-center py-3">暂无活动记录</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

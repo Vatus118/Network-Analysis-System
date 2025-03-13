@@ -1,204 +1,191 @@
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>舆情系统功能介绍 - 选择需求</title>
-    <link rel="stylesheet" href="../static/css/introduction.css">
-    <script src="../static/js/introduction.js"></script>
-</head>
-<body>
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}欢迎 | 用户管理系统{% endblock %}
+
+{% block extra_css %}
+<style>
+    .hero-section {
+        background: linear-gradient(135deg, #007bff, #0056b3);
+        color: white;
+        padding: 5rem 0;
+        margin-bottom: 3rem;
+    }
+    
+    .feature-card {
+        margin-bottom: 2rem;
+        height: 100%;
+    }
+    
+    .feature-icon {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        color: #007bff;
+    }
+    
+    .cta-section {
+        background-color: #f8f9fa;
+        padding: 3rem 0;
+        margin-top: 3rem;
+        text-align: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- 导航栏会从base.html继承 -->
+
+<!-- 英雄区域 -->
+<div class="hero-section">
     <div class="container">
-        <!-- 左上角logo -->
-        <div class="logo">
-            <a href="index.html">
-                <img src="logo.svg" alt="Logo">
-            </a>
-        </div>
-
-        <!-- 右上角联系按钮 -->
-        <div class="header-contact">
-            <div class="menu-icon">
-                <div class="circle"></div>
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">简单、高效的用户管理</h1>
+                <p class="lead mb-4">为您的项目提供完整的用户管理解决方案，包括注册、登录以及个人资料管理。</p>
+                <div class="d-flex gap-3">
+                    <a href="{% url 'register' %}" class="btn btn-light btn-lg px-4">立即注册</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-light btn-lg px-4">登录</a>
+                </div>
             </div>
-            <a href="login.html" class="contact-button">CONTACT</a>
-        </div>
-
-        <!-- 功能导航栏 - 随鼠标滑动 -->
-        <div class="floating-nav" id="floatingNav">
-            <div class="nav-item active" data-target="section-overview">系统概览</div>
-            <div class="nav-item" data-target="section-monitor">舆情监测</div>
-            <div class="nav-item" data-target="section-analysis">情感分析</div>
-            <div class="nav-item" data-target="section-visualization">数据可视化</div>
-            <div class="nav-item" data-target="section-alert">预警系统</div>
-            <div class="nav-item" data-target="section-report">报告生成</div>
-        </div>
-
-        <!-- 主内容区域 -->
-        <div class="content">
-            <div class="intro-header">
-                <h1>舆情监管系统</h1>
-                <p class="subtitle">全方位监测、分析与管理网络舆情</p>
-            </div>
-
-            <!-- 锚点定位的各部分内容 -->
-            <section id="section-overview" class="feature-section active-section">
-                <div class="section-content">
-                    <h2>系统概览</h2>
-                    <div class="feature-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">📊</div>
-                            <h3>实时监测</h3>
-                            <p>24小时不间断监测各大平台热点信息，第一时间捕捉舆情动态</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🔍</div>
-                            <h3>深度分析</h3>
-                            <p>基于AI算法的情感分析，精准解读舆情态势和发展趋势</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">⚡</div>
-                            <h3>快速响应</h3>
-                            <p>智能预警机制，及时发现舆情风险，支持快速决策和应对</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">📈</div>
-                            <h3>可视化展示</h3>
-                            <p>多维度数据展示，直观呈现舆情分析结果和发展趋势</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="section-monitor" class="feature-section">
-                <div class="section-content">
-                    <h2>舆情监测</h2>
-                    <div class="feature-details">
-                        <div class="feature-image">
-                            <img src="../static/images/monitor-demo.svg" alt="舆情监测演示">
-                        </div>
-                        <div class="feature-text">
-                            <h3>全平台数据采集</h3>
-                            <p>系统支持对微博、知乎、抖音、新闻网站等多个平台的数据采集，确保舆情信息全面覆盖。</p>
-                            
-                            <h3>智能爬虫技术</h3>
-                            <p>采用分布式爬虫架构，智能识别热点话题，自动抓取相关评论和互动数据。</p>
-                            
-                            <h3>关键词监控</h3>
-                            <p>支持自定义关键词监控，针对特定话题进行定向追踪和监测。</p>
-                            
-                            <h3>热点事件检测</h3>
-                            <p>基于大数据分析，自动识别突发热点事件，第一时间推送预警。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="section-analysis" class="feature-section">
-                <div class="section-content">
-                    <h2>情感分析</h2>
-                    <div class="feature-details">
-                        <div class="feature-text">
-                            <h3>AI驱动情感识别</h3>
-                            <p>采用先进的自然语言处理技术，精准识别文本中的情感倾向和强度。</p>
-                            
-                            <h3>多维度情感分类</h3>
-                            <p>将舆情分为正面、负面、中性等多个维度，细化分析舆论态势。</p>
-                            
-                            <h3>情感演变追踪</h3>
-                            <p>追踪话题情感变化趋势，预测舆情发展方向。</p>
-                            
-                            <h3>意见领袖识别</h3>
-                            <p>自动识别舆论场中的关键意见领袖，分析其影响力和观点倾向。</p>
-                        </div>
-                        <div class="feature-image">
-                            <img src="../static/images/analysis-demo.svg" alt="情感分析演示">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="section-visualization" class="feature-section">
-                <div class="section-content">
-                    <h2>数据可视化</h2>
-                    <div class="feature-details">
-                        <div class="feature-image">
-                            <img src="../static/images/visualization-demo.svg" alt="数据可视化演示">
-                        </div>
-                        <div class="feature-text">
-                            <h3>实时数据大屏</h3>
-                            <p>基于Echarts打造的舆情数据大屏，支持多种图表展示形式，实时更新数据。</p>
-                            
-                            <h3>词云分析</h3>
-                            <p>自动生成热点话题词云图，直观展示核心关键词和热度。</p>
-                            
-                            <h3>趋势图表</h3>
-                            <p>多维度趋势分析图表，展示舆情随时间变化的态势。</p>
-                            
-                            <h3>地域分布</h3>
-                            <p>舆情地域分布热力图，了解不同地区关注度和情感差异。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="section-alert" class="feature-section">
-                <div class="section-content">
-                    <h2>预警系统</h2>
-                    <div class="feature-details">
-                        <div class="feature-text">
-                            <h3>多级预警机制</h3>
-                            <p>设置低、中、高、严重四级预警等级，针对不同风险等级启动相应预警。</p>
-                            
-                            <h3>实时通知</h3>
-                            <p>支持邮件、短信、APP推送等多种预警通知方式，确保及时响应。</p>
-                            
-                            <h3>智能阈值设定</h3>
-                            <p>自动学习历史数据，智能设定预警阈值，降低误报率。</p>
-                            
-                            <h3>预警处理流程</h3>
-                            <p>标准化预警处理流程，记录处理过程和结果，形成完整闭环。</p>
-                        </div>
-                        <div class="feature-image">
-                            <img src="../static/images/alert-demo.svg" alt="预警系统演示">
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="section-report" class="feature-section">
-                <div class="section-content">
-                    <h2>报告生成</h2>
-                    <div class="feature-details">
-                        <div class="feature-image">
-                            <img src="../static/images/report-demo.svg" alt="报告生成演示">
-                        </div>
-                        <div class="feature-text">
-                            <h3>自动报告生成</h3>
-                            <p>一键生成日报、周报、月报等多种类型舆情分析报告。</p>
-                            
-                            <h3>自定义模板</h3>
-                            <p>支持报告模板自定义，满足不同部门和场景的需求。</p>
-                            
-                            <h3>多格式导出</h3>
-                            <p>支持PDF、Word、PPT等多种格式导出，方便分享和存档。</p>
-                            
-                            <h3>智能摘要</h3>
-                            <p>AI自动提取关键信息，生成舆情摘要，快速把握核心内容。</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- 底部联系我们区域 -->
-            <div class="contact-section">
-                <h2>选择您的需求</h2>
-                <p>根据您的业务场景，我们可以提供定制化的舆情监管解决方案</p>
-                <a href="contact.html" class="contact-now-btn">立即联系我们</a>
+            <div class="col-lg-6 d-none d-lg-block">
+                <img src="{% static 'img/hero-image.svg' %}" alt="用户管理系统" class="img-fluid">
             </div>
         </div>
     </div>
+</div>
 
-    <script src="../static/js/introduction.js"></script>
-</body>
-</html>
+<!-- 特点介绍 -->
+<div class="container">
+    <div class="row text-center mb-5">
+        <div class="col-lg-8 mx-auto">
+            <h2 class="fw-bold">为什么选择我们的用户管理系统?</h2>
+            <p class="lead text-muted">专为开发者设计，简化用户管理流程</p>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card feature-card shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-shield-lock"></i>
+                    </div>
+                    <h4>安全可靠</h4>
+                    <p class="text-muted">采用先进的加密技术和安全最佳实践，保护用户数据安全。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-speedometer2"></i>
+                    </div>
+                    <h4>高效管理</h4>
+                    <p class="text-muted">直观的界面帮助您高效管理用户账户，简化日常操作。</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card feature-card shadow-sm">
+                <div class="card-body text-center p-4">
+                    <div class="feature-icon">
+                        <i class="bi bi-tools"></i>
+                    </div>
+                    <h4>可扩展</h4>
+                    <p class="text-muted">灵活的架构设计，可根据项目需求进行自定义和扩展。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 功能展示 -->
+<div class="container my-5">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h2 class="fw-bold">核心功能</h2>
+            <p class="text-muted">全方位满足用户管理需求</p>
+        </div>
+    </div>
+    
+    <div class="row align-items-center mb-5">
+        <div class="col-md-6">
+            <h3>用户注册与认证</h3>
+            <p>提供安全、便捷的用户注册与登录功能，支持邮箱验证，确保账户安全。</p>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 邮箱注册</li>
+                <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 安全密码存储</li>
+                <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 登录保护</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'img/auth-screenshot.svg' %}" alt="认证功能" class="img-fluid rounded shadow">
+        </div>
+    </div>
+    
+    <div class="row align-items-center mb-5 flex-md-row-reverse">
+        <div class="col-md-6">
+            <h3>个人资料管理</h3>
+            <p>用户可以轻松管理自己的个人资料，上传头像，更新联系信息。</p>
+            <ul class="list-unstyled">
+                <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 头像上传</li>
+                <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 个人信息编辑</li>
+                <li><i class="bi bi-check-circle-fill text-primary me-2"></i> 联系方式管理</li>
+            </ul>
+        </div>
+        <div class="col-md-6">
+            <img src="{% static 'img/profile-screenshot.svg' %}" alt="个人资料功能" class="img-fluid rounded shadow">
+        </div>
+    </div>
+</div>
+
+<!-- 行动召唤 -->
+<div class="cta-section">
+    <div class="container">
+        <h2 class="mb-4">准备好开始了吗?</h2>
+        <p class="lead mb-4">立即注册，体验高效的用户管理系统</p>
+        <a href="{% url 'register' %}" class="btn btn-primary btn-lg contact-button">免费注册</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // 添加平滑效果，实现动态跳转
+    document.addEventListener('click', function(e) {
+        // 检查是否点击的是需要平滑跳转的链接
+        if (e.target.classList.contains('contact-button') || 
+            (e.target.tagName === 'A' && e.target.getAttribute('href') === 'login.html')) {
+            e.preventDefault();
+            
+            // 模拟页面转场效果
+            document.body.style.opacity = '1';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(function() {
+                document.body.style.opacity = '0';
+            }, 10);
+            
+            setTimeout(function() {
+                // 跳转到联系页面
+                window.location.href = e.target.getAttribute('href') + '?from=introduction';
+            }, 500);
+        }
+    });
+    
+    // 检测是否是从login页面跳转过来
+    window.addEventListener('load', function() {
+        const fromLogin = new URLSearchParams(window.location.search).get('from');
+        if (fromLogin === 'login') {
+            // 添加淡入效果
+            document.body.style.opacity = '0';
+            document.body.style.transition = 'opacity 0.5s ease';
+            
+            setTimeout(function() {
+                document.body.style.opacity = '1';
+            }, 100);
+        }
+    });
+</script>
+{% endblock %}

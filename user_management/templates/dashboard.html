@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}仪表板 | 用户管理系统{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-4">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">个人资料概览</h5>
+            </div>
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    {% if user.avatar %}
+                    <img src="{{ user.avatar.url }}" alt="{{ user.username }}" class="avatar-large rounded-circle">
+                    {% else %}
+                    <div class="avatar-placeholder rounded-circle d-flex align-items-center justify-content-center">
+                        <span>{{ user.username|make_list|first|upper }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <h4>{{ user.username }}</h4>
+                <p class="text-muted">{{ user.email }}</p>
+                <a href="{% url 'profile' %}" class="btn btn-outline-primary">编辑个人资料</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">欢迎回来, {{ user.username }}!</h5>
+            </div>
+            <div class="card-body">
+                <h5>账户信息:</h5>
+                <ul class="list-group mb-4">
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>用户名</span>
+                        <span class="fw-bold">{{ user.username }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>邮箱</span>
+                        <span class="fw-bold">{{ user.email }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>账户创建时间</span>
+                        <span class="fw-bold">{{ user.date_joined|date:"Y-m-d H:i" }}</span>
+                    </li>
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                        <span>最后登录时间</span>
+                        <span class="fw-bold">{{ user.last_login|date:"Y-m-d H:i" }}</span>
+                    </li>
+                </ul>
+                
+                <h5>快速操作:</h5>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <a href="{% url 'profile' %}" class="card h-100 text-decoration-none">
+                            <div class="card-body">
+                                <h6 class="card-title">更新个人资料</h6>
+                                <p class="card-text text-muted">编辑您的个人信息和联系方式</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-md-6">
+                        <a href="{% url 'user_list' %}" class="card h-100 text-decoration-none">
+                            <div class="card-body">
+                                <h6 class="card-title">浏览用户</h6>
+                                <p class="card-text text-muted">查看系统中的其他用户</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -39,7 +39,7 @@ def login_view(request):
             messages.error(request, "登录失败，请检查邮箱和密码。")
     else:
         form = UserLoginForm()
-    return render(request, 'user_management/', {'form': form})
+    return render(request, 'user_management/login.html', {'form': form})
 
 @login_required
 def logout_view(request):

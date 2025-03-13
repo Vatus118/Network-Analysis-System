@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}用户列表 | 用户管理系统{% endblock %}
+
+{% block content %}
+<div class="row mb-4">
+    <div class="col-md-8">
+        <h2>用户列表</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="input-group">
+            <input type="text" id="userSearch" class="form-control" placeholder="搜索用户...">
+            <button class="btn btn-outline-secondary" type="button" id="searchButton">
+                <i class="bi bi-search"></i> 搜索
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for user_item in users %}
+    <div class="col user-card">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body text-center">
+                <div class="mb-3">
+                    {% if user_item.avatar %}
+                    <img src="{{ user_item.avatar.url }}" alt="{{ user_item.username }}" class="avatar-medium rounded-circle">
+                    {% else %}
+                    <div class="avatar-placeholder-medium rounded-circle d-flex align-items-center justify-content-center mx-auto">
+                        <span>{{ user_item.username|make_list|first|upper }}</span>
+                    </div>
+                    {% endif %}
+                </div>
+                <h5 class="card-title">{{ user_item.username }}</h5>
+                <p class="card-text text-muted">{{ user_item.email }}</p>
+                <p class="card-text"><small class="text-muted">加入时间: {{ user_item.date_joined|date:"Y-m-d" }}</small></p>
+                <a href="{% url 'user_detail' user_item.id %}" class="btn btn-outline-primary">查看详情</a>
+            </div>
+        </div>
+    </div>
+    {% empty %}
+    <div class="col-12">
+        <div class="alert alert-info" role="alert">
+            没有找到用户记录。
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="mt-4">
+    {% if is_paginated %}
+    <nav aria-label="页面导航">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li class="page-item">
+                <a class="page-link" href="?page=1">&laquo; 首页</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">上一页</a>
+            </li>
+            {% endif %}
+
+            {% for num in page_obj.paginator.page_range %}
+                {% if page_obj.number == num %}
+                <li class="page-item active">
+                    <span class="page-link">{{ num }}</span>
+                </li>
+                {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+                </li>
+                {% endif %}
+            {% endfor %}
+
+            {% if page_obj.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">下一页</a>
+            </li>
+            <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">末页 &raquo;</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // 简单的用户搜索功能
+    document.getElementById('searchButton').addEventListener('click', function() {
+        const searchInput = document.getElementById('userSearch').value.toLowerCase();
+        const userCards = document.querySelectorAll('.user-card');
+        
+        userCards.forEach(card => {
+            const username = card.querySelector('.card-title').textContent.toLowerCase();
+            const email = card.querySelector('.card-text').textContent.toLowerCase();
+            
+            if (username.includes(searchInput) || email.includes(searchInput)) {
+                card.style.display = '';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+    
+    // 按下回车键也触发搜索
+    document.getElementById('userSearch').addEventListener('keyup', function(event) {
+        if (event.key === 'Enter') {
+            document.getElementById('searchButton').click();
+        }
+    });
+</script>
+{% endblock %}
